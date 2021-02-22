@@ -1,0 +1,20 @@
+Precisamos usar um tradutor para rodar o typescript
+
+comando: yarn init -y //Cria sem perguntar
+
+yarn add express
+
+yarn add types/express
+
+yarn add typescript -D
+
+yarn tsc --init
+
+
+tsconfig 
+    /* Strict Type-Checking Options */
+    "strict": false,     
+
+
+
+yarn add ts-node-dev -D // O TRADUTOR DE TS PARA NODE
