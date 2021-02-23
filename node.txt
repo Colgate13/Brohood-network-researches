@@ -18,3 +18,29 @@ tsconfig
 
 
 yarn add ts-node-dev -D // O TRADUTOR DE TS PARA NODE
+
+
+Lembrando que para usar { PRECISA IR NO ARQUIVO tsconfig é habilitar umas coisa e desabilitar outras
+
+import { Entity } from "typeorm";
+
+@Entity("users")
+class User {
+
+}
+
+export { User };
+
+
+
+//PREICISA MUDAR ISSO ->
+
+    /* Experimental Options */
+     "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+     "emitDecoratorMetadata": true,    
+
+
+
+      "strictPropertyInitialization": false, 
+}
+
