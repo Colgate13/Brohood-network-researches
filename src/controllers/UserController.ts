@@ -38,8 +38,8 @@ class UserController {
 
         await usersRepository.save(user);
 
-        console.log(`> log-Registred_User: '${user.name}' Email: '${user.email}' Registred in DB(users) with id: '${user.id}'`);
-        return response.json(user);
+        console.log(`> log-Registred_User: '${user.name}' Email: '${user.email}' Registred in DB(DataBase.users) with id: '${user.id}'`);
+        return response.status(201).json(user);
 
     }   
 }
