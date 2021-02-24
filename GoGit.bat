@@ -4,7 +4,7 @@ git add package.json
 git add yarn.lock
 git add tsconfig.json
 git add node.txt
-git commit -m "Push by GoGit -> NLW 1"
+git commit -m "Push by GoGit -> Inserindo surveys no db e documentando tests automatizado"
 git pull https://github.com/Colgate13/NLW4---Nodejs.git main
 git push https://github.com/Colgate13/NLW4---Nodejs.git -u main
 git status

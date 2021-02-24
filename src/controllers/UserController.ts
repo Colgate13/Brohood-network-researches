@@ -1,22 +1,22 @@
-import { Request, Response } from  'express';
-import { getRepository } from 'typeorm';
-import { User } from '../models/User';
+import { Request, Response } from 'express';
+import { getCustomRepository } from 'typeorm';
+import { UsersRepository } from '../repositories/UsersRepository';
 
 class UserController {
     async create(request: Request, response: Response)
     {
         const { name, email } = request.body;
 
-        const usersRepository = getRepository(User);
+        const usersRepository = getCustomRepository(UsersRepository);
 
+
+        // SELECT * FROM USERS WHERE EMAIL = "EMAIL"
         const userAlredyExists = await usersRepository.findOne({
             name
         });
         const emailAlredyExists = await usersRepository.findOne({
             email
         });
-
-        
         
         if(emailAlredyExists) {
             console.log(`> log-Registred_User: Try Registred another user with email: '${request.body.email}' -> BLOCKED`);
