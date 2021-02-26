@@ -1,12 +1,29 @@
 import { Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
 import { UsersRepository } from '../repositories/UsersRepository';
+import * as yup from 'yup';
 
 class UserController {
     async create(request: Request, response: Response)
     {
         const { name, email } = request.body;
 
+        const schema = yup.object().shape({
+            name: yup.string().required("> Name is required"),
+            email: yup.string().email().required("> Email is required")
+        })
+
+      /*  if(!(await schema.isValid(request.body)))
+        {
+            return response.status(400).json({error: "Validation F"})
+        }*/
+        try{
+            await schema.validate(request.body, { abortEarly: false })
+        }catch(err)
+        {
+            console.log(`> log-Registred_User: Validation Faliled! Try Registred n/a name or email: Name: '${request.body.name}' Email: '${request.body.email}'. RETURN -> BLOCKED`)
+            return response.status(400).json({error : err });
+        }
         const usersRepository = getCustomRepository(UsersRepository);
 
 
@@ -19,14 +36,14 @@ class UserController {
         });
         
         if(emailAlredyExists) {
-            console.log(`> log-Registred_User: Try Registred another user with email: '${request.body.email}' -> BLOCKED`);
+            console.log(`> log-Registred_User: Try Registred another user with email: '${request.body.email}' RETURN -> BLOCKED`);
             return response.status(400).json({
                 error: "Email already used!",
             });
         }
 
         if(userAlredyExists) {
-            console.log(`> log-Registred_User: Try Registred another user with name: '${request.body.name}' -> BLOCKED`);
+            console.log(`> log-Registred_User: Try Registred another user with name: '${request.body.name}' RETURN -> BLOCKED`);
             return response.status(400).json({
                 error: "Name already used!",
             });
