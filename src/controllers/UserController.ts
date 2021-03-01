@@ -7,11 +7,12 @@ import { AppError } from '../errors/AppError';
 class UserController {
     async create(request: Request, response: Response)
     {
-        const { name, email } = request.body;
+        const { name, email, password } = request.body;
 
         const schema = yup.object().shape({
-            name: yup.string().required("> Name is required"),
-            email: yup.string().email().required("> Email is required")
+            name: yup.string().required("> Name is required!"),
+            email: yup.string().email().required("> Email is required!"),
+            password: yup.string().required("> Password is required!")
         })
 
       /*  if(!(await schema.isValid(request.body)))
@@ -32,6 +33,7 @@ class UserController {
         const userAlredyExists = await usersRepository.findOne({
             name
         });
+
         const emailAlredyExists = await usersRepository.findOne({
             email
         });
@@ -45,9 +47,13 @@ class UserController {
             console.log(`> log-Registred_User: Try Registred another user with name: '${request.body.name}' RETURN -> BLOCKED`);
             throw new AppError("error: Name already used!");
         }
-        
+        if(request.body.password == "")
+        {
+            console.log(`> log-Registred_User: Password N/a RETURN -> BLOCKED`);
+            throw new AppError("error: Password N/A!");
+        }
         const user = usersRepository.create({
-            name, email
+            name, email, password
         })
 
         await usersRepository.save(user);

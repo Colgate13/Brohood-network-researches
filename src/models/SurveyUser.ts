@@ -13,19 +13,12 @@ class SurveyUser{
         @Column()
         user_id: string;
 
-        @ManyToOne(() => User)
-        @JoinColumn({ name: "user_id" })
-        user: User;
-    
         @Column()
         survey_id: string;
 
-        @ManyToOne(() => Survey)
-        @JoinColumn({ name: "survey_id" })
-        survey: Survey
-    
         @Column()
         value: number;
+
 
         @CreateDateColumn()
         created_at: Date;

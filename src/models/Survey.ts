@@ -7,7 +7,10 @@ class Survey{
     
         @PrimaryColumn()
         readonly id: string;
-        
+    
+        @Column()
+        propried: string;
+
         @Column()
         title: string;
     

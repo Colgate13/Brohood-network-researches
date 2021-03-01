@@ -16,7 +16,12 @@ const app = express();
     PATCH -> Alteração espedifíca
 */
 app.use(express.json());
-app.use(router);
+try {
+    app.use(router);
+} catch (error) {
+    console.log("catch (error) ->> router !!!!!!!!!!!!!!!!!!!!! ");
+    console.log(error);
+}
 
 app.use((err: Error, request: Request, response: Response, _next: NextFunction) => {
         if (err instanceof AppError) {

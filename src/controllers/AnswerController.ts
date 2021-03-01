@@ -18,23 +18,26 @@ class AnswerController {
     async execute(request: Request, response: Response ){
         const { value } = request.params;
         const { id } = request.query;
+        const { email } = request.query;
 
         const surveysUsersRepository = getCustomRepository(SurveysUsersRepository);
 
-        const surveyUser = await surveysUsersRepository.findOne({
-            id: String(id)
-        });
+        const user_id = await surveysUsersRepository.findOne({user_id: String(email)});
 
-        if(!surveyUser)
+
+        if(!user_id)
         {
-            throw new AppError("error: Survey does not exists!");
+            throw new AppError(`error: Survey does not exists! ${String(email)}`);
         }
         
-        surveyUser.value = Number(value);
+        user_id.value = Number(value);
+  
+        console.log(`> Id=${id}`)
+        console.log(`> value=${value}`)
 
-        await surveysUsersRepository.save(surveyUser);
-        console.log(surveyUser)
-        return response.json(surveyUser);
+        await surveysUsersRepository.save(user_id);
+        console.log(user_id)
+        return response.json(user_id);
     }
 }
 
