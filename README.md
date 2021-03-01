@@ -3,7 +3,7 @@
 network-researches is a Nodejs APIresFull for researches, NPS and create tables applied static with dades genere for researches and NPS.
 
 ## technologies
-
+- yarn and npm
 - [Express](https://expressjs.com/pt-br/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/#/) (DB SQL)
@@ -12,10 +12,14 @@ network-researches is a Nodejs APIresFull for researches, NPS and create tables 
 
 ## Installation
 
-```gitclone
+```yarn 
 git clone https://github.com/Colgate13/Brohood-networrk-researches.git
 yarn add
 npm install
+yarn typeorm migration:run
+yarn test
+yarn dev
+$ > Server is running!
 ```
 
 ## Usage
@@ -34,6 +38,7 @@ request(JSON)
 	"email": "gabreilbarros13@gmail.com",
 	"password": "123456789"
 }
+
 response(JSON)
 {
   "id": "e4d62a53-18ca-4582-bff3-6680eb4e462d",// user id
@@ -43,7 +48,8 @@ response(JSON)
   "created_at": "2021-03-01T01:30:37.000Z" // Date created
 }
 
-(POST)localhost/surveys
+
+(POST)localhost/surveys 
 
 request(JSON)
 {
@@ -51,6 +57,7 @@ request(JSON)
 	"title": "Brohood networrk researches",
 	"description": "Brohood network researches is good?"
 }
+
 response(JSON)
 {
   "id": "a757d7ec-8b52-4293-937e-a29efc71c957",
@@ -59,6 +66,8 @@ response(JSON)
   "description": "Brohood network researches is good?",// Description for survey/researches
   "created_at": "2021-03-01T01:32:37.000Z"// Date created
 }
+
+
 (GET)localhost/surveys
 
 response(JSON)
@@ -71,6 +80,7 @@ request(JSON)
 	"email": "test@dxecig.com",// EMAIL recipient 
 	"survey_id": "a757d7ec-8b52-4293-937e-a29efc71c957"// research/survey/researches ID
 }
+
 response(JSON)
 {
   "id": "66006929-986f-49d8-8688-22fb49e3dc51",//ID answer
@@ -79,7 +89,9 @@ response(JSON)
   "created_at": "2021-03-01T01:41:10.000Z"// Date created
 }
 
+
 (GET)localhost/nps/:survey id
+
 response(JSON)
 {
   "detractor": 2, // negative ratings, NUMER. '2' are exemple
