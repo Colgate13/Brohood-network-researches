@@ -1,6 +1,6 @@
 # Brohood-networrk-researches
 
-network-researches is a Nodejs APIresFull for researches, NPS and create tables applied static with dades genere for researches and NPS.
+Network-researchers is a Node Js API restFul for NPS surveys and creates static tables applied with the survey data.
 
 ## technologies
 - yarn and npm
