@@ -138,7 +138,7 @@ response(JSON)
     "AlfaLove": 40 // Degrees For pie chart/statistic graph Sum for all = 360
   }
 }
-}
+
 
 ```
 
