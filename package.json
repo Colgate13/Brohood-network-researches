@@ -1,12 +1,11 @@
 {
   "name": "nlwNode1",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "test": "set NODE_ENV=test&&jest -i"
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@types/mathjs": "^6.0.11",
