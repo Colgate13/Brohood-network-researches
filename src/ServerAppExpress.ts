@@ -16,6 +16,27 @@ const app = express();
     PATCH -> Alteração espedifíca
 */
 app.use(express.json());
+
+/**
+ * Middleware's
+*/
+
+function logRequests(request, response, next)
+{
+
+   const { method, url } = request;
+
+   const logLabel = `[${method.toUpperCase()}] ${url}`;
+   console.time(logLabel)//Console.time conta o tempo de um console.log para outro
+    
+   next();
+    console.timeEnd(logLabel);
+
+}
+
+
+app.use(logRequests);
+
 try {
     app.use(router);
 } catch (error) {
