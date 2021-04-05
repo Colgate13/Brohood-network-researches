@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 3333
+
 import app from './ServerAppExpress';
 
-app.listen(3333, () => console.log("> Server is running!"));
+app.listen(PORT, () => console.log(`🐱‍👤> Server is running! PORT -> ${PORT}`));
