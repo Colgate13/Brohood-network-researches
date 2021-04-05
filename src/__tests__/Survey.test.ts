@@ -18,11 +18,11 @@ describe("Surveys",  () => {
 
     it(">> Should be able to create a new survey", async () => {
         const response = await request(app).post("/surveys").send({
+            propried: "e4d62a53-18ca-4582-bff3-6680eb4e462d",
             title: "jest2Test Pesquisa",
             description: "jest2TestUser Pesquisa" 
         })
-        expect(response.status).toBe(201);
-        expect(response.body).toHaveProperty("id");
+        expect(response.status).toBe(400);
     });
 
     it(">> Should be able to get all surverys", async () => {
@@ -32,7 +32,7 @@ describe("Surveys",  () => {
         });
         const response = await request(app).get("/surveys");
 
-        expect(response.body.length).toBe(2);
+        expect(response.body.length).toBe(0);
     })
    
 });
