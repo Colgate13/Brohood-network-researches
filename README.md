@@ -14,8 +14,7 @@ Network-researchers is a Node Js API restFul for NPS surveys and creates static 
 
 ```yarn 
 git clone https://github.com/Colgate13/Brohood-networrk-researches.git
-yarn add
-npm install
+yarn 
 yarn typeorm migration:run
 yarn test
 yarn dev
