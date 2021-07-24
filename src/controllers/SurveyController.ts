@@ -37,7 +37,6 @@ class SurveyController {
 
     async show(request: Request, response: Response) {
 
-
         const surveysRepository = getCustomRepository(SurveyRepository);
 
         const all = await surveysRepository.find();
